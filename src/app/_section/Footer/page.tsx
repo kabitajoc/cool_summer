@@ -1,45 +1,39 @@
 import React from "react";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import {
-  faFacebookF,
-  faInstagram,
-  faTwitter,
-  faLinkedinIn,
-} from "@fortawesome/free-brands-svg-icons";
+import Link from "next/link";
 import { Facebook, Instagram, Linkedin, Twitter } from "lucide-react";
 
 function Footer() {
   return (
-    <footer className="bg-slate-800 text-white p-10">
+    <footer className="bg-slate-800 text-white p-6 sm:p-10">
       <div className="container mx-auto px-4">
         <div className="flex flex-wrap justify-between">
           <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
             <h5 className="text-lg font-bold mb-3">Need Help</h5>
             <ul>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Contact Us
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Track Order
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Returns & Refunds
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   FAQ's
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Career
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -48,55 +42,55 @@ function Footer() {
             <h5 className="text-lg font-bold mb-3">Company</h5>
             <ul>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   About Us
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  euphoria Blog
-                </a>
+                <Link href="#" className="text-gray-400 hover:text-white">
+                  Euphoria Blog
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  euphoriastan
-                </a>
+                <Link href="#" className="text-gray-400 hover:text-white">
+                  Euphoriastan
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Collaboration
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Media
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
 
           <div className="w-full sm:w-1/2 md:w-1/4 mb-6">
-            <h5 className="text-lg font-bold mb-3">More info</h5>
+            <h5 className="text-lg font-bold mb-3">More Info</h5>
             <ul>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
-                  Term and Conditions
-                </a>
+                <Link href="#" className="text-gray-400 hover:text-white">
+                  Terms and Conditions
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Privacy Policy
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Shipping Policy
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Sitemap
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
@@ -105,41 +99,41 @@ function Footer() {
             <h5 className="text-lg font-bold mb-3">Location</h5>
             <ul>
               <li className="mb-2">
-                <a
+                <Link
                   href="mailto:support@euphoria.in"
                   className="text-gray-400 hover:text-white"
                 >
                   support@euphoria.in
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   Eklingpura Chouraha, Ahmedabad Main Road
-                </a>
+                </Link>
               </li>
               <li className="mb-2">
-                <a href="#" className="text-gray-400 hover:text-white">
+                <Link href="#" className="text-gray-400 hover:text-white">
                   (NH 8- Near Mahadev Hotel) Udaipur, India- 313002
-                </a>
+                </Link>
               </li>
             </ul>
           </div>
         </div>
 
-        <div className="flex justify-between items-center mt-6 ">
-          <div className="flex space-x-4">
-            <a href="#" className="text-gray-400 hover:text-white">
+        <div className="flex flex-col sm:flex-row justify-between items-center mt-6">
+          <div className="flex space-x-4 mb-4 sm:mb-0">
+            <Link href="#" className="text-gray-400 hover:text-white">
               <Facebook />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            </Link>
+            <Link href="#" className="text-gray-400 hover:text-white">
               <Instagram />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            </Link>
+            <Link href="#" className="text-gray-400 hover:text-white">
               <Twitter />
-            </a>
-            <a href="#" className="text-gray-400 hover:text-white">
+            </Link>
+            <Link href="#" className="text-gray-400 hover:text-white">
               <Linkedin />
-            </a>
+            </Link>
           </div>
 
           <div className="flex space-x-4">
@@ -206,13 +200,13 @@ function Footer() {
           </div>
         </div>
 
-        <div className="flex justify-between border-t border-gray-700 mt-6 pt-6">
-          <h5 className="text-lg font-bold mb-3">Popular Categories</h5>
+        <div className="flex flex-col sm:flex-row justify-between border-t border-gray-700 mt-6 pt-6">
+          <h5 className="text-lg font-bold mb-3 sm:mb-0">Popular Categories</h5>
 
           <span className="text-gray-400 cursor-pointer">▼</span>
         </div>
-        
-        <div className="text-center  text-gray-400 border-t border-gray-700 mt-6 pt-6">
+
+        <div className="text-center text-gray-400 border-t border-gray-700 mt-6 pt-6">
           © 2023 Euphoria Folks Pvt Ltd. All rights reserved.
         </div>
       </div>

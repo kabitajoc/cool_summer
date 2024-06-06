@@ -26,21 +26,24 @@ function WomensCategory() {
     },
   ];
   return (
-    <div className="px-6 py-10">
-      <h3 className="text-4xl font-bold mb-10 border-l-4 border-gray-800 pl-4">
+    <div className="px-4 py-8 sm:px-6 sm:py-10">
+      <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10 border-l-4 border-gray-800 pl-2 sm:pl-4">
         Womens Category
       </h3>
-      <div className=" flex justify-around items-center">
+      <div className="flex flex-wrap justify-around items-center gap-4">
         {categories.map((category, index) => (
-          <figure key={index}>
-            <Image src={category.img} alt={`${category.title}`} />
-            <div className="flex justify-around">
-              <figcaption>
-                <p className=" font-extrabold">{category.title}</p>
-                Explore Now !
+          <figure key={index} className="w-full sm:w-auto">
+            <Image
+              src={category.img}
+              alt={`${category.title}`}
+              className="w-full sm:w-auto h-auto"
+            />
+            <div className="flex justify-between items-center mt-2 sm:mt-4">
+              <figcaption className="text-center">
+                <p className="font-extrabold">{category.title}</p>
+                <p>Explore Now !</p>
               </figcaption>
-
-              <MoveRight />
+              <MoveRight className="ml-2" />
             </div>
           </figure>
         ))}

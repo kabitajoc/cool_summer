@@ -41,54 +41,68 @@ const Cart = () => {
   ];
 
   return (
-    <div className="container mx-auto p-6 font-poppins">
-      <h1 className="text-2xl font-bold mb-6">Shopping Cart</h1>
+    <div className="container mx-auto p-4 sm:p-6 font-poppins">
+      <h1 className="text-xl sm:text-2xl font-bold mb-6">Shopping Cart</h1>
       <div className="overflow-x-auto">
         <table className="min-w-full bg-white border rounded-lg shadow-md">
           <thead>
             <tr className="bg-gray-800 text-white">
-              <th className="py-3 px-4 text-left">Product Details</th>
-              <th className="py-3 px-4 text-right">Price</th>
-              <th className="py-3 px-4 text-right">Quantity</th>
-              <th className="py-3 px-4 text-right">Shipping</th>
-              <th className="py-3 px-4 text-right">Subtotal</th>
-              <th className="py-3 px-4 text-center">Action</th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-left">
+                Product Details
+              </th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Price</th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Quantity</th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Shipping</th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-right">Subtotal</th>
+              <th className="py-2 sm:py-3 px-2 sm:px-4 text-center">Action</th>
             </tr>
           </thead>
           <tbody>
             {items.map((item, index) => (
               <tr key={index} className="border-t">
-                <td className="py-4 px-4">
+                <td className="py-2 sm:py-4 px-2 sm:px-4">
                   <div className="flex items-center">
                     <Image
                       src={item.image}
                       alt={item.name}
                       width={50}
                       height={50}
-                      className="mr-4"
+                      className="mr-2 sm:mr-4"
                     />
                     <div>
                       <p className="font-semibold">{item.name}</p>
-                      <p className="text-sm text-gray-600">
+                      <p className="text-xs sm:text-sm text-gray-600">
                         Color: {item.color}
                       </p>
-                      <p className="text-sm text-gray-600">Size: {item.size}</p>
+                      <p className="text-xs sm:text-sm text-gray-600">
+                        Size: {item.size}
+                      </p>
                     </div>
                   </div>
                 </td>
-                <td className="py-4 px-4 text-right">{item.price}</td>
-                <td className="py-4 px-4 text-right">
+                <td className="py-2 sm:py-4 px-2 sm:px-4 text-right">
+                  {item.price}
+                </td>
+                <td className="py-2 sm:py-4 px-2 sm:px-4 text-right">
                   <div className="flex items-center justify-end">
-                    <button className="bg-gray-200 px-2 py-1">-</button>
+                    <button className="bg-gray-200 px-2 py-1 text-xs sm:text-sm">
+                      -
+                    </button>
                     <span className="mx-2">{item.quantity}</span>
-                    <button className="bg-gray-200 px-2 py-1">+</button>
+                    <button className="bg-gray-200 px-2 py-1 text-xs sm:text-sm">
+                      +
+                    </button>
                   </div>
                 </td>
-                <td className="py-4 px-4 text-right">{item.shipping}</td>
-                <td className="py-4 px-4 text-right">{item.subtotal}</td>
-                <td className="py-4 px-4 text-center">
+                <td className="py-2 sm:py-4 px-2 sm:px-4 text-right">
+                  {item.shipping}
+                </td>
+                <td className="py-2 sm:py-4 px-2 sm:px-4 text-right">
+                  {item.subtotal}
+                </td>
+                <td className="py-2 sm:py-4 px-2 sm:px-4 text-center">
                   <button>
-                    <Trash className="w-5 h-5 text-red-500" />
+                    <Trash className="w-4 h-4 sm:w-5 sm:h-5 text-red-500" />
                   </button>
                 </td>
               </tr>

@@ -29,16 +29,23 @@ function NewArrival() {
     },
   ];
   return (
-    <div className="px-6 py-10">
-      <h3 className="text-4xl font-bold mb-10 border-l-4 border-gray-800 pl-4 ">
+    <div className="px-2 py-8 sm:px-6 sm:py-10">
+      <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10 border-l-4 border-gray-800 pl-2 sm:pl-4">
         New Arrivals
       </h3>
-      <div className="arrivalCards flex px-6 gap-20 font-extrabold">
+      <div className="arrivalCards flex flex-wrap justify-around gap-4  font-extrabold">
         {ArrivalCards.map((arrivalCard, index) => {
           return (
-            <div className=" space-y-6" key={index}>
-              <Image src={arrivalCard.image} alt="arrival-image" />
-              <h4 className="px-4">{arrivalCard.title}</h4>
+            <div
+              className="space-y-4 sm:space-y-6 w-full sm:w-auto"
+              key={index}
+            >
+              <Image
+                src={arrivalCard.image}
+                alt="arrival-image"
+                className="w-full "
+              />
+              <h4 className="px-2 sm:px-4 text-center">{arrivalCard.title}</h4>
             </div>
           );
         })}
