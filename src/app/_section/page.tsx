@@ -3,7 +3,7 @@ import Hero from "./Hero/page";
 
 import NewArrival from "./NewArrival/page";
 import HeroCards from "./HeroCards/page";
-import BigSavingZone from "./BigSavingZone/page";
+// import BigSavingZone from "./BigSavingZone/page";
 import MensCategory from "./MensCategory/page";
 import WomensCategory from "./WomensCategory/page";
 import TopBrands from "./Brands/page";
@@ -16,7 +16,7 @@ function Section() {
       <Hero />
       <HeroCards />
       <NewArrival />
-      <BigSavingZone />
+      {/* <BigSavingZone /> */}
       <MensCategory />
       <WomensCategory />
       <TopBrands />
