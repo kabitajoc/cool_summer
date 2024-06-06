@@ -8,8 +8,8 @@ import logo5 from "@/assets/HomeImages/logo5.png";
 function TopBrands() {
   return (
     <div className=" space-y-8 bg-slate-800 p-12 rounded ">
-      <div className=" text-white flex justify-center items-center">
-        <h2 className="text-2xl">Top Brands Deal</h2>
+      <div className=" text-white flex flex-col justify-center items-center">
+        <h2 className="text-2xl ">Top Brands Deal</h2>
         <p>
           Up To <span className=" text-yellow-400 ">60%</span> off on brands
         </p>
@@ -20,11 +20,11 @@ function TopBrands() {
       >
         <Image src={logo1} alt="logo" />
 
-        <Image className="bg-white rounded" src={logo2} alt="logo1"/>
+        <Image className="bg-white rounded" src={logo2} alt="logo1" />
 
         <Image className="bg-white rounded" src={logo3} alt="logo2" />
 
-        <Image className="bg-white rounded" src={logo4} alt="logo3"/>
+        <Image className="bg-white rounded" src={logo4} alt="logo3" />
 
         <Image src={logo5} alt="logo4" />
       </div>
