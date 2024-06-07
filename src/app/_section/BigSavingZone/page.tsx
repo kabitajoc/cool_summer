@@ -8,7 +8,7 @@ import Saving5 from "@/assets/HomeImages/BigSavingZone5.png";
 import { ArrowDownToLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const SavingZone = [
+const savings = [
   {
     id: 1,
     image: Saving1,
@@ -56,6 +56,34 @@ const SavingZone = [
   },
 ];
 
+const SavingCard = ({ image, title, description, off, textPosition, textColor }) => (
+  <motion.div
+    className="saving-card relative bg-white rounded-lg overflow-hidden shadow-lg group"
+    whileHover={{ scale: 1.05 }}
+    initial={{ opacity: 0 }}
+    animate={{ opacity: 1 }}
+    transition={{ duration: 0.5 }}
+  >
+    <Image src={image} alt={title} className="w-full h-auto" />
+    <div className={`saving-card-text absolute ${textPosition} p-6 ${textColor}`}>
+      <div className="space-y-3">
+        <h4 className="text-2xl font-bold leading-tight">
+          {title.split(" ").map((word, index) => (
+            <span key={index}>
+              {word}
+              {index !== title.split(" ").length - 1 && <br />}
+            </span>
+          ))}
+        </h4>
+        <p>{description}</p>
+        <h4>{off}</h4>
+        <ArrowDownToLine />
+        <Button>Shop Now</Button>
+      </div>
+    </div>
+  </motion.div>
+);
+
 const BigSavingZone = () => {
   return (
     <div className="px-6 py-10">
@@ -64,80 +92,18 @@ const BigSavingZone = () => {
       </h3>
       <div className="saving-zone grid gap-6 lg:gap-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {SavingZone.slice(0, 3).map((saving) => (
-            <motion.div
-              key={saving.id}
-              className="saving-card relative bg-white rounded-lg overflow-hidden shadow-lg group"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src={saving.image}
-                alt={saving.title}
-                className="w-full h-auto"
-              />
-              <div
-                className={`saving-card-text absolute ${saving.textPosition} p-6 ${saving.textColor}`}
-              >
-                <div className="space-y-3">
-                  <h4 className="text-2xl font-bold leading-tight">
-                    {saving.title.split(" ").map((word, index) => (
-                      <span key={index}>
-                        {word}
-                        {index !== saving.title.split(" ").length - 1 && <br />}
-                      </span>
-                    ))}
-                  </h4>
-                  <p>{saving.description}</p>
-                  <h4>{saving.off}</h4>
-                  <ArrowDownToLine />
-                  <Button>Shop Now</Button>
-                </div>
-              </div>
-            </motion.div>
+          {savings.slice(0, 3).map((saving) => (
+            <SavingCard key={saving.id} {...saving} />
           ))}
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {SavingZone.slice(3).map((saving) => (
-            <motion.div
-              key={saving.id}
-              className="saving-card relative bg-white rounded-lg overflow-hidden shadow-lg group"
-              whileHover={{ scale: 1.05 }}
-              initial={{ opacity: 0 }}
-              animate={{ opacity: 1 }}
-              transition={{ duration: 0.5 }}
-            >
-              <Image
-                src={saving.image}
-                alt={saving.title}
-                className="w-full h-auto"
-              />
-              <div
-                className={`saving-card-text absolute ${saving.textPosition} p-6 ${saving.textColor}`}
-              >
-                <div className="space-y-3">
-                  <h4 className="text-2xl font-bold leading-tight">
-                    {saving.title.split(" ").map((word, index) => (
-                      <span key={index}>
-                        {word}
-                        {index !== saving.title.split(" ").length - 1 && <br />}
-                      </span>
-                    ))}
-                  </h4>
-                  <p>{saving.description}</p>
-                  <h4>{saving.off}</h4>
-                  <ArrowDownToLine />
-                  <Button>Shop Now</Button>
-                </div>
-              </div>
-            </motion.div>
+          {savings.slice(3).map((saving) => (
+            <SavingCard key={saving.id} {...saving} />
           ))}
         </div>
       </div>
     </div>
   );
-}
+};
 
 export default BigSavingZone;

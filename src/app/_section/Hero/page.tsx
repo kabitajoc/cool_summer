@@ -22,7 +22,7 @@ const Hero = () => {
         <p className="hidden md:hidden lg:block text-lg md:text-2xl">
           cool/colorful/comfy
         </p>
-        <Button className="bg-white text-black font-extrabold text-xs sm:text-sm md:text-base lg:text-lg">
+        <Button className="bg-white text-black font-extrabold text-xs sm:text-sm md:text-base lg:text-lg hover:bg-black hover:text-white">
           Shop Now
         </Button>
       </div>
