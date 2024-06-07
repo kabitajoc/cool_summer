@@ -1,5 +1,5 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import Saving1 from "@/assets/HomeImages/Bigsavingzone1.png";
 import Saving2 from "@/assets/HomeImages/Bigsavingzone2.png";
 import Saving3 from "@/assets/HomeImages/Bigsavingzone3.png";
@@ -8,7 +8,17 @@ import Saving5 from "@/assets/HomeImages/BigSavingZone5.png";
 import { ArrowDownToLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-const savings = [
+interface Saving {
+  id: number;
+  image: StaticImageData;
+  title: string;
+  description: string;
+  off: string;
+  textPosition: string;
+  textColor: string;
+}
+
+const savings: Saving[] = [
   {
     id: 1,
     image: Saving1,
@@ -56,7 +66,7 @@ const savings = [
   },
 ];
 
-const SavingCard = ({ image, title, description, off, textPosition, textColor }) => (
+const SavingCard: React.FC<Saving> = ({ image, title, description, off, textPosition, textColor }) => (
   <motion.div
     className="saving-card relative bg-white rounded-lg overflow-hidden shadow-lg group"
     whileHover={{ scale: 1.05 }}
@@ -92,14 +102,13 @@ const BigSavingZone = () => {
       </h3>
       <div className="saving-zone grid gap-6 lg:gap-8">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          {savings.slice(0, 3).map((saving) => (
-            <SavingCard key={saving.id} {...saving} />
-          ))}
+          <SavingCard {...savings[0]} />
+          <SavingCard {...savings[1]} />
+          <SavingCard {...savings[2]} />
         </div>
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          {savings.slice(3).map((saving) => (
-            <SavingCard key={saving.id} {...saving} />
-          ))}
+          <SavingCard {...savings[3]} />
+          <SavingCard {...savings[4]} />
         </div>
       </div>
     </div>
