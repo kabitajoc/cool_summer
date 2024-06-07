@@ -8,107 +8,63 @@ import Saving5 from "@/assets/HomeImages/BigSavingZone5.png";
 import { ArrowDownToLine } from "lucide-react";
 import { Button } from "@/components/ui/button";
 
-interface Saving {
-  id: number;
-  image: StaticImageData;
-  title: string;
-  description: string;
-  off: string;
-  textPosition: string;
-  textColor: string;
-}
 
-const savings: Saving[] = [
-  {
-    id: 1,
-    image: Saving1,
-    title: "Hawaiian Shirts",
-    description: "Dress up in summer vibe",
-    off: "UPTO 50% OFF",
-    textPosition: "left-6 top-10",
-    textColor: "text-white",
-  },
-  {
-    id: 2,
-    image: Saving2,
-    title: "Printed T-Shirt",
-    description: "New Designs Every Week",
-    off: "UPTO 40% OFF",
-    textPosition: "right-1 top-10",
-    textColor: "text-black",
-  },
-  {
-    id: 3,
-    image: Saving3,
-    title: "Cargo Joggers",
-    description: "Move with style & comfort",
-    off: "UPTO 50% OFF",
-    textPosition: "right-1 bottom-10",
-    textColor: "text-gray-800",
-  },
-  {
-    id: 4,
-    image: Saving4,
-    title: "Urban Shirts",
-    description: "Live In Comfort",
-    off: "FLAT 60% OFF",
-    textPosition: "right-10 top-2",
-    textColor: "text-gray-600",
-  },
-  {
-    id: 5,
-    image: Saving5,
-    title: "Oversized T-Shirts",
-    description: "Street Style Icon",
-    off: "FLAT 60% OFF",
-    textPosition: "right-10 top-10",
-    textColor: "text-black",
-  },
-];
 
-const SavingCard: React.FC<Saving> = ({ image, title, description, off, textPosition, textColor }) => (
-  <motion.div
-    className="saving-card relative bg-white rounded-lg overflow-hidden shadow-lg group"
-    whileHover={{ scale: 1.05 }}
-    initial={{ opacity: 0 }}
-    animate={{ opacity: 1 }}
-    transition={{ duration: 0.5 }}
-  >
-    <Image src={image} alt={title} className="w-full h-auto" />
-    <div className={`saving-card-text absolute ${textPosition} p-6 ${textColor}`}>
-      <div className="space-y-3">
-        <h4 className="text-2xl font-bold leading-tight">
-          {title.split(" ").map((word, index) => (
-            <span key={index}>
-              {word}
-              {index !== title.split(" ").length - 1 && <br />}
-            </span>
-          ))}
-        </h4>
-        <p>{description}</p>
-        <h4>{off}</h4>
-        <ArrowDownToLine />
-        <Button>Shop Now</Button>
-      </div>
-    </div>
-  </motion.div>
-);
+import React from "react";
 
 const BigSavingZone = () => {
   return (
-    <div className="px-6 py-10">
-      <h3 className="text-4xl font-bold mb-10 border-l-4 border-gray-800 pl-4">
-        Big Saving Zone
-      </h3>
-      <div className="saving-zone grid gap-6 lg:gap-8">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
-          <SavingCard {...savings[0]} />
-          <SavingCard {...savings[1]} />
-          <SavingCard {...savings[2]} />
+    <div className="p-6">
+      <h2 className="text-2xl font-bold mb-6">Big Saving Zone</h2>
+      <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-4">
+        <div className="bg-blue-100 p-4 rounded-lg text-center">
+          <Image src={Saving1} alt="Hawaiian Shirts" className="mx-auto mb-4" />
+          <h3 className="text-xl font-semibold">Hawaiian Shirts</h3>
+          <p>Dress up in summer vibes</p>
+          <p className="font-bold">UPTO 50% OFF</p>
+          <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+            Shop Now
+          </button>
         </div>
-        <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 lg:gap-8">
-          <SavingCard {...savings[3]} />
-          <SavingCard {...savings[4]} />
+        <div className="bg-pink-100 p-4 rounded-lg text-center">
+          <Image src={Saving2} alt="Printed T-Shirt" className="mx-auto mb-4" />
+          <h3 className="text-xl font-semibold">Printed T-Shirt</h3>
+          <p>New Designs Every Week</p>
+          <p className="font-bold">UPTO 40% OFF</p>
+          <button className="mt-4 bg-pink-500 text-white py-2 px-4 rounded">
+            Shop Now
+          </button>
+        </div>
+        <div className="bg-gray-100 p-4 rounded-lg text-center">
+          <Image src={Saving3} alt="Cargo Joggers" className="mx-auto mb-4" />
+          <h3 className="text-xl font-semibold">Cargo Joggers</h3>
+          <p>Move with style & comfort</p>
+          <p className="font-bold">UPTO 50% OFF</p>
+          <button className="mt-4 bg-gray-500 text-white py-2 px-4 rounded">
+            Shop Now
+          </button>
+        </div>
+        <div className="bg-gray-100 p-4 rounded-lg text-center">
+          <Image src={Saving4} alt="Urban Shirts" className="mx-auto mb-4" />
+          <h3 className="text-xl font-semibold">Urban Shirts</h3>
+          <p>Live in Comfort</p>
+          <p className="font-bold">FLAT 50% OFF</p>
+          <button className="mt-4 bg-gray-500 text-white py-2 px-4 rounded">
+            Shop Now
+          </button>
+        </div>
+        <div className="bg-blue-100 p-4 rounded-lg text-center">
+          <Image
+            src={Saving5}
+            alt="Oversized T-Shirts"
+            className="mx-auto mb-4"
+          />
+          <h3 className="text-xl font-semibold">Oversized T-Shirts</h3>
+          <p>Street Style Icon</p>
+          <p className="font-bold">FLAT 50% OFF</p>
+          <button className="mt-4 bg-blue-500 text-white py-2 px-4 rounded">
+            Shop Now
+          </button>
         </div>
       </div>
     </div>
