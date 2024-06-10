@@ -1,38 +1,79 @@
-import React from "react";
-import Image from "next/image";
-import womenwear from "../../../../public/HomeImages/women.png";
-import womenwear1 from "../../../../public/HomeImages/women1.png";
-import womenwear2 from "../../../../public/HomeImages/women2.png";
-import womenwear3 from "../../../../public/HomeImages/women3.png";
-import { MoveRight } from "lucide-react";
+import React, { useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import { MoveRight, ShoppingCart } from "lucide-react";
+import { WomenCategories } from "@src/constants/Women/WomensCategoryImage";
 
-function WomensCategory() {
-  const categories = [
-    {
-      img: womenwear,
-      title: "Hoodies & Sweatshirt",
-    },
-    {
-      img: womenwear1,
-      title: "Coats & Parkas",
-    },
-    {
-      img: womenwear2,
-      title: "Tees & T-Shirt",
-    },
-    {
-      img: womenwear3,
-      title: "Boxers",
-    },
-  ];
+type WomensCategory = {
+  title: string;
+  img: StaticImageData;
+};
+
+type ModalProps = {
+  show: boolean;
+  onClose: () => void;
+  item: WomensCategory | null;
+  addToCart: (item: WomensCategory) => void;
+};
+
+const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
+  if (!show || !item) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded shadow-lg w-1/4">
+        <Image
+          src={item.img}
+          alt={item.title}
+          className="w-full mb-4"
+          width={200}
+          height={200}
+        />
+        <h4 className="text-center mb-4">{item.title}</h4>
+        <button
+          className="bg-blue-500 text-white px-4 py-2 rounded flex items-center"
+          onClick={() => {
+            addToCart(item);
+            onClose();
+          }}
+        >
+          Add to Cart <ShoppingCart />
+        </button>
+        <button
+          className="bg-gray-500 text-white px-4 py-2 rounded mt-2"
+          onClick={onClose}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const WomensCategory: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<WomensCategory | null>(null);
+
+  const handleItemClick = (item: WomensCategory) => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+  
+  const handleAddToCart = (item: WomensCategory) => {
+    console.log("Item added to cart:", item);
+  };
+
   return (
     <div className="px-4 py-8 sm:px-6 sm:py-10">
       <h3 className="text-2xl sm:text-4xl font-bold mb-6 sm:mb-10 border-l-4 border-gray-800 pl-2 sm:pl-4">
         Womens Category
       </h3>
       <div className="flex flex-wrap justify-around items-center gap-4">
-        {categories.map((category, index) => (
-          <figure key={index} className="w-full sm:w-auto">
+        {WomenCategories.map((category, index) => (
+          <figure
+            key={index}
+            className="w-full sm:w-auto cursor-pointer"
+            onClick={() => handleItemClick(category)}
+          >
             <Image
               src={category.img}
               alt={`${category.title}`}
@@ -48,8 +89,14 @@ function WomensCategory() {
           </figure>
         ))}
       </div>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        item={selectedItem}
+        addToCart={handleAddToCart}
+      />
     </div>
   );
-}
+};
 
 export default WomensCategory;

@@ -6,7 +6,10 @@ interface SearchBarProps {
   setSearchQuery: React.Dispatch<React.SetStateAction<string>>;
 }
 
-const SearchBar: React.FC<SearchBarProps> = ({ searchQuery, setSearchQuery }) => {
+const SearchBar: React.FC<SearchBarProps> = ({
+  searchQuery,
+  setSearchQuery,
+}) => {
   return (
     <div className="search-bar flex justify-center items-center gap-3 px-5 rounded h-10 bg-gray-100">
       <Search />

@@ -4,6 +4,18 @@ import "./globals.css";
 import { cn } from "@src/lib/utils";
 import Nav from "./_section/Nav/page";
 import Footer from "./_section/Footer/page";
+// import { CartProvider } from '../path/to/CartContext';
+
+// function MyApp({ Component, pageProps }) {
+//   return (
+//     <CartProvider>
+//       <Component {...pageProps} />
+//     </CartProvider>
+//   );
+// }
+
+// export default MyApp;
+
 
 const lobster = Lobster({
   weight: "400",

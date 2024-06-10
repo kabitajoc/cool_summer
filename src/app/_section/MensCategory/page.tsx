@@ -1,66 +1,77 @@
-import React from "react";
-import Image from "next/image";
-import Menswear from "../../../../public/HomeImages/mensCategory.png";
-import Menswear1 from "../../../../public/HomeImages/mensCategory1.png";
-import Menswear2 from "../../../../public/HomeImages/mensCategory2.png";
-import Menswear3 from "../../../../public/HomeImages/mensCategory3.png";
-import Menswear4 from "../../../../public/HomeImages/mensCategory4.png";
-import Menswear5 from "../../../../public/HomeImages/mensCategory5.png";
-import Menswear6 from "../../../../public/HomeImages/mensCategory6.png";
-import Menswear7 from "../../../../public/HomeImages/mensCategory7.png";
+"use client";
 
-function MensCategory() {
-  const categories = [
-    {
-      id: 2,
-      img: Menswear1,
-      title: " Printed T-Shirts",
-    },
-    {
-      id: 1,
-      img: Menswear,
-      title: "Shirts",
-    },
-    {
-      id: 3,
-      img: Menswear2,
-      title: " Plain T-Shirt",
-    },
-    {
-      id: 4,
-      img: Menswear3,
-      title: "Polo T-Shirt",
-    },
-    {
-      id: 5,
-      img: Menswear4,
-      title: " Hoodies & Sweetshirt",
-    },
-    {
-      id: 6,
-      img: Menswear5,
-      title: "Jeans",
-      link: "Explore Now",
-    },
-    {
-      id: 7,
-      img: Menswear6,
-      title: " Activewear",
-    },
-    {
-      id: 8,
-      img: Menswear7,
-      title: "Boxers",
-    },
-  ];
+import React, { useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import { ShoppingCart } from "lucide-react";
+import { mensCategories } from "@src/constants/mensWearImage";
+
+type MensCard = {
+  id: number;
+  img: StaticImageData;
+  title: string;
+};
+
+type ModalProps = {
+  show: boolean;
+  onClose: () => void;
+  item: MensCard | null;
+  addToCart: (item: MensCard) => void;
+};
+
+const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
+  if (!show || !item) return null;
+
+  return (
+    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+      <div className="bg-white p-6 rounded shadow-lg w-1/4">
+        {item && (
+          <>
+            <Image src={item.img} alt="arrival-image" className="w-full mb-4" />
+            <h4 className="text-center mb-4">{item.title}</h4>
+            <button
+              className="bg-blue-500 text-white px-4 py-2 rounded flex items-center"
+              onClick={() => {
+                addToCart(item);
+                onClose();
+              }}
+            >
+              Add to Cart <ShoppingCart />
+            </button>
+          </>
+        )}
+        <button
+          className="bg-gray-500 text-white px-4 py-2 rounded mt-2"
+          onClick={onClose}
+        >
+          Close
+        </button>
+      </div>
+    </div>
+  );
+};
+
+const MensCategory: React.FC = () => {
+  const [showModal, setShowModal] = useState<boolean>(false);
+  const [selectedItem, setSelectedItem] = useState<MensCard | null>(null);
+
+  const handleItemClick = (item: MensCard) => {
+    setSelectedItem(item);
+    setShowModal(true);
+  };
+
+  const handleAddToCart = (item: MensCard) => {
+    // Implement your logic to add item to cart here
+    console.log("Item added to cart:", item);
+  };
+
   return (
     <div className="px-6 py-10">
       <h3 className="Men text-4xl font-bold mb-10 border-l-4 border-gray-800 pl-4">
         Mens Category
       </h3>
       <div className="men-category flex flex-wrap justify-around gap-y-5">
-        {categories.map((category) => (
-          <div key={category.id}>
+        {mensCategories.map((category) => (
+          <div key={category.id} onClick={() => handleItemClick(category)}>
             <Image src={category.img} alt="men's wear" />
             <div className="explore-flex flex justify-between">
               <div className="category-text">
@@ -85,8 +96,14 @@ function MensCategory() {
           </div>
         ))}
       </div>
+      <Modal
+        show={showModal}
+        onClose={() => setShowModal(false)}
+        item={selectedItem}
+        addToCart={handleAddToCart}
+      />
     </div>
   );
-}
+};
 
 export default MensCategory;
