@@ -1,5 +1,3 @@
-"use client";
-
 import React, { useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { ShoppingCart } from "lucide-react";
@@ -16,6 +14,11 @@ type ModalProps = {
   onClose: () => void;
   item: MensCard | null;
   addToCart: (item: MensCard) => void;
+};
+
+type MensCategoryProps = {
+  cartItems: MensCard[];
+  handleAddToCart: (item: MensCard) => void;
 };
 
 const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
@@ -50,18 +53,13 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
   );
 };
 
-const MensCategory: React.FC = () => {
+const MensCategory: React.FC<MensCategoryProps> = ({ cartItems, handleAddToCart }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<MensCard | null>(null);
 
   const handleItemClick = (item: MensCard) => {
     setSelectedItem(item);
     setShowModal(true);
-  };
-
-  const handleAddToCart = (item: MensCard) => {
-    // Implement your logic to add item to cart here
-    console.log("Item added to cart:", item);
   };
 
   return (

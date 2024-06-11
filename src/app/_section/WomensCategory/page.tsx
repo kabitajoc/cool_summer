@@ -15,6 +15,11 @@ type ModalProps = {
   addToCart: (item: WomensCategory) => void;
 };
 
+type WomensCategoryProps = {
+  cartItems: WomensCategory[];
+  handleAddToCart: (item: WomensCategory) => void;
+};
+
 const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
   if (!show || !item) return null;
 
@@ -49,17 +54,13 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
   );
 };
 
-const WomensCategory: React.FC = () => {
+const WomensCategory: React.FC<WomensCategoryProps> = ({ cartItems, handleAddToCart }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<WomensCategory | null>(null);
 
   const handleItemClick = (item: WomensCategory) => {
     setSelectedItem(item);
     setShowModal(true);
-  };
-  
-  const handleAddToCart = (item: WomensCategory) => {
-    console.log("Item added to cart:", item);
   };
 
   return (

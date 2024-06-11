@@ -16,6 +16,11 @@ type ModalProps = {
   addToCart: (item: ArrivalCard) => void;
 };
 
+type NewArrivalProps = {
+  cartItems: ArrivalCard[];
+  handleAddToCart: (item: ArrivalCard) => void;
+};
+
 // Modal component
 const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
   if (!show || !item) return null;
@@ -53,19 +58,13 @@ const Modal: React.FC<ModalProps> = ({ show, onClose, item, addToCart }) => {
   );
 };
 
-const NewArrival: React.FC = () => {
+const NewArrival: React.FC<NewArrivalProps> = ({ cartItems, handleAddToCart }) => {
   const [showModal, setShowModal] = useState<boolean>(false);
   const [selectedItem, setSelectedItem] = useState<ArrivalCard | null>(null);
-  const [cartItems, setCartItems] = useState<ArrivalCard[]>([]);
 
   const handleImageClick = (item: ArrivalCard) => {
     setSelectedItem(item);
     setShowModal(true);
-  };
-
-  const handleAddToCart = (item: ArrivalCard) => {
-    setCartItems((prevItems) => [...prevItems, item]);
-    console.log("Item added to cart:", item);
   };
 
   return (
@@ -95,11 +94,6 @@ const NewArrival: React.FC = () => {
         item={selectedItem}
         addToCart={handleAddToCart}
       />
-      <div className="fixed top-0 right-0 m-4">
-        <button className="bg-blue-500 text-white px-4 py-2 rounded">
-          Cart ({cartItems.length})
-        </button>
-      </div>
     </div>
   );
 };

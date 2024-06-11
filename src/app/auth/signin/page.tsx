@@ -9,7 +9,7 @@ import Link from "next/link";
 import { Twitter } from "lucide-react";
 import { signIn } from "next-auth/react";
 
-const Signup = () => {
+const page = () => {
   const handleGithubLogin = () => {
     signIn("github", { callbackUrl: "/" });
   };
@@ -96,4 +96,4 @@ const Signup = () => {
   );
 };
 
-export default Signup;
+export default page;
